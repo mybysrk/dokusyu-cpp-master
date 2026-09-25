@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#pragma warning(disable : 4819)
+
+#include <iostream>
 #include <string>
 
 class Person
@@ -41,23 +43,21 @@ public:
 
 int main()
 {
-    // 引数なし → Person()
-    Person* p1 = new Person();
+    // 各要素を異なるコンストラクタで初期化する動的配列
+    Person* persons = new Person[5]
+    {
+        Person("田中"),
+        Person("佐藤", 25),
+        Person(),
+    };
 
-    // stringを1つ → Person(string)
-    Person* p2 = new Person("田中");
+    for (int i = 0; i < 3; ++i)
+    {
+        persons[i].show();
+    }
 
-    // stringとint → Person(string, int)
-    Person* p3 = new Person("佐藤", 25);
-
-    p1->show();
-    p2->show();
-    p3->show();
-
-    // 動的確保したのでdeleteする
-    delete p1;
-    delete p2;
-    delete p3;
+    // 動的確保したのでdelete[]で解放する
+    delete[] persons;
 
     return 0;
 }
