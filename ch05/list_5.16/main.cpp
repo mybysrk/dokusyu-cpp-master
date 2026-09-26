@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 class Marker
 {
@@ -38,4 +38,6 @@ int main()
     std::cout << "参照渡し前" << std::endl;
     reference(m);
     std::cout << "参照渡し後" << std::endl;
+    std::cout << "copyはmのコピーが一時的に作られ、それが破棄されるときにデストラクターが呼ばれる" << std::endl;  
+    std::cout << "referenceはmの参照がそのまま渡されるので、デストラクターは呼ばれない" << std::endl;
 }

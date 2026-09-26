@@ -13,4 +13,6 @@ int main()
     int& y = get_x(); // 返された参照をそのまま参照として受け取る
     y = 100;
     std::cout << x << std::endl;
+    x = 200;
+    std::cout << y << std::endl;
 }
