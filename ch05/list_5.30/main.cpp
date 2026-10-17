@@ -1,6 +1,6 @@
 #include <iostream>
 
-int function(int a, int b, int c)
+void function(int a, int b, int c)
 {
     std::cout << "function(" << a << ", " << b << ", " << c << ")"
         << std::endl;
