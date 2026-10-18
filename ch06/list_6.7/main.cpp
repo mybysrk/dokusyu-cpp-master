@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 class Integer
 {
@@ -15,7 +15,7 @@ public:
 
 bool Integer::operator!() const
 {
-    return value != 0;
+    return value == 0;
 }
 
 bool Integer::operator&&(const Integer& rhs) const
