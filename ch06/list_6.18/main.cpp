@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 class vector4d
 {
@@ -9,6 +9,7 @@ public:
         : x{ x }, y{ y }, z{ z }, w{ w } {}
 
     friend vector4d add(const vector4d& lhs, const vector4d& rhs);
+    friend std::ostream& operator<<(std::ostream& os, const vector4d& value);
 };
 
 vector4d add(const vector4d& lhs, const vector4d& rhs)
@@ -21,6 +22,13 @@ vector4d add(const vector4d& lhs, const vector4d& rhs)
         lhs.w + rhs.w
     };
     return ret;
+}
+
+std::ostream& operator<<(std::ostream& os, const vector4d& value)
+{
+    os << '(' << value.x << ", " << value.y << ", "
+        << value.z << ", " << value.w << ')';
+    return os;
 }
 
 class vector3d
@@ -47,7 +55,9 @@ int main()
     vector3d v1{ 1, 2, 3 }, v2{ 0, 1, 0 };
 
     vector4d a = v1; // vector3dをvector4dに変換する（①）
+    std::cout << "v1を4次元ベクトルに変換: " << a << '\n';
 
-                     // OK。vector4dのフレンド関数が呼ばれる（②）
+    // 引数のv1とv2はvector4dに変換されてからaddに渡される（②）
     vector4d b = add(v1, v2);
+    std::cout << "v1 + v2: " << b << '\n';
 }
